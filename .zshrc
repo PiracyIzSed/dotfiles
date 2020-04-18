@@ -3,12 +3,16 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/jatin/.oh-my-zsh"
+export GOPATH="/home/jatin/workspace"
+export PATH="$PATH:$GOPATH/bin/"
 eval "$(hub alias -s)"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
@@ -67,13 +71,9 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git github zsh-autosuggestions)
+plugins=(git github docker)
 
 autoload predict-on
-zle-line-init() {
-  predict-on
-}
-zle -N zle-line-init
 
 source $ZSH/oh-my-zsh.sh
 
@@ -103,4 +103,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls="ls -laH --color=always"
-# bindkey '^F' autosuggest-accept
+
+if [ -z "$TMUX" ]; then
+    tmux attach -t default || tmux new -s default
+fi
