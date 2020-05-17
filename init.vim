@@ -1,12 +1,12 @@
-set background=dark
-set t_Co=256
 set nu
+set rnu
 set nocompatible
 
 let mapleader=" "
 filetype off
 
 let g:airline_powerline_fonts = 1
+let g:airline_theme = "palenight"
 
 " => Plugin Manager
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -24,6 +24,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'fatih/vim-go'
 Plug 'jremmen/vim-ripgrep'
 Plug 'mbbill/undotree'
+Plug 'tpope/vim-fugitive'
+Plug 'drewtempelmeyer/palenight.vim'
 
 call plug#end()            " required
 
@@ -95,15 +97,8 @@ set novisualbell
 set t_vb=
 set tm=500
 
-" Properly disable sound on errors on MacVim
-if has("gui_macvim")
-    autocmd GUIEnter * set vb t_vb=
-endif
-
-
 " Add a bit extra margin to the left
 set foldcolumn=1
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -114,6 +109,9 @@ syntax enable
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
+set background=dark
+set t_Co=256
+colorscheme palenight
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
@@ -130,6 +128,9 @@ set noswapfile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use spaces instead of tabs
 set expandtab
+
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+set list
 
 " Be smart when using tabs ;)
 set smarttab
@@ -158,10 +159,10 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+map <C-j> <leader>j
+map <C-k> <leader>k
+map <C-h> <leader>h
+map <C-l> <leader>l
 
 """"""""""""""""""""""""""""""
 " => Status line

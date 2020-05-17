@@ -71,7 +71,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git github docker)
+plugins=(git github docker tmux kubectl)
 
 autoload predict-on
 
@@ -107,3 +107,4 @@ alias ls="ls -laH --color=always"
 if [ -z "$TMUX" ]; then
     tmux attach -t default || tmux new -s default
 fi
+
